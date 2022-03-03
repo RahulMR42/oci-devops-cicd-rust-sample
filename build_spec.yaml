@@ -29,8 +29,8 @@ steps:
     name: "Build the app"
     command: |
       cd ${OCI_PRIMARY_SOURCE_DIR}
-      curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-      rustc --version
+      curl https://sh.rustup.rs -sSf | sh
+
     
     onFailure:
       - type: Command
