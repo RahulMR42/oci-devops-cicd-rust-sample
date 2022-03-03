@@ -40,36 +40,12 @@ steps:
         timeoutInSeconds: 40
         runAs: root
 
-#   - type: Command
-#     timeoutInSeconds: 600
-#     name: "Sonar Quality Check"
-#     command: |
-#       cd ${OCI_PRIMARY_SOURCE_DIR}
-#       wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-${sonar_cli_version}-linux.zip 1>/dev/null 2>/dev/null
-#       unzip sonar-scanner-cli-${sonar_cli_version}-linux.zip 1>/dev/null
-#       PATH=$PATH:"sonar-scanner-${sonar_cli_version}-linux/bin"
-#       sonar-scanner \
-#           -Dsonar.projectKey=${sonar_project} \
-#           -Dsonar.sources=. \
-#           -Dsonar.host.url=${sonar_url} \
-#           -Dsonar.login=${sonar_token} \
-#           -Dsonar.qualitygate.wait=${sonar_quality_wait}
-    
-#     onFailure:
-#       - type: Command
-#         command: |
-#           echo "Handling Failure"
-#           echo "Failure successfully handled"
-#         timeoutInSeconds: 40
-#         runAs: root
-      
-
-#   - type: Command
-#     timeoutInSeconds: 1200
-#     name: "Build container image"
-#     command: |
-#       cd ${OCI_WORKSPACE_DIR}/${code_repo_name}
-#       docker build --pull --rm -t graal_polyglot_sample_app .      
+  - type: Command
+    timeoutInSeconds: 1200
+    name: "Build container image"
+    command: |
+      cd ${OCI_WORKSPACE_DIR}/${code_repo_name}
+      docker build --pull --rm -t rust_app_base .      
      
 # outputArtifacts:
 #   - name: graal_polyglot_docker_image
