@@ -1,20 +1,21 @@
 # Rust as the base image
 FROM rust
 
-#Switch to a work directory
+#Create and switch to a work directory
+RUN USER=root cargo new --bin helloworldapp
 WORKDIR /helloworldapp
 
-# 2. Copy cargo manifests
+# Copy cargo manifests
 COPY ./Cargo.toml ./Cargo.toml
 
-# 3. Build with dependecies
+# Build with dependecies
 RUN cargo build --release
 RUN rm src/*.rs
 
-# 4. Copy source
+# Copy source
 COPY ./src ./src
 
-# 5. Cargo release 
+# Cargo release 
 RUN rm ./target/release/deps/helloworldapp*
 RUN cargo install --path .
 
