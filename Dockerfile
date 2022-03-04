@@ -1,6 +1,12 @@
-FROM rust
+FROM rust:1.59.0
 
-COPY ./ ./
+ENV ROCKET_ADDRESS=0.0.0.0
+ENV ROCKET_PORT=8080
 
-RUN cargo run
+WORKDIR /app
+COPY . .
 
+RUN rustup default nightly
+RUN cargo build
+
+CMD ["cargo", "run"]
