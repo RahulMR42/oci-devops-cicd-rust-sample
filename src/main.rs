@@ -4,8 +4,6 @@
 
 use rocket::Request;
 use rocket::response::content::Json;
-use rocket_contrib::templates::Template;
-
 
 
 #[get("/hello")]
