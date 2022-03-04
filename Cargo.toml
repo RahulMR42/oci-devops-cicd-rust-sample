@@ -5,3 +5,9 @@ authors = ["Rahul MR"]
 
 [dependencies]
 rocket = "0.5.0-rc.1"
+rocket_codegen = "*"
+
+[dependencies.rocket_contrib]
+default-features = false
+features = ["json"]
+version = "*"
