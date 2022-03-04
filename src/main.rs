@@ -17,13 +17,13 @@ fn hello() -> Json<&'static str> {
 #[catch(404)]
 fn not_found(req: &Request) -> String {
     print!("{}", req);
-    format!("We lost with the path '{}'", req.uri())
+    format!("Sorry path not available '{}'", req.uri())
 }
 
 
 fn main() {
   rocket::ignite()
     .register(catchers![not_found])
-    .mount("/api", routes![hello])
+    .mount("/v0", routes![hello])
     .launch();
 }
