@@ -4,10 +4,9 @@ version = "0.0.0"
 authors = ["Rahul MR"]
 
 [dependencies]
-rocket = "*"
-rocket_codegen = "*"
+rocket = "0.4.5"
+serde = { version = "1.0", features = ["derive"] }
 
 [dependencies.rocket_contrib]
-default-features = false
-features = ["json"]
-version = "*"
+version = "0.4.5"
+features = ["handlebars_templates"]

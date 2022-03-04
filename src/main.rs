@@ -1,39 +1,33 @@
-#![feature(proc_macro_hygiene, decl_macro)]
+#![feature(decl_macro)]
 
-#[macro_use]
-extern crate rocket;
-#[macro_use]
-extern crate rocket_contrib;
-#[macro_use]
-extern crate serde_derive;
+#[macro_use] extern crate rocket;
 
-use rocket_contrib::json::{Json, JsonValue};
-
-mod model;
-use model::Employee;
-use rocket::response::status;
+use rocket::Request;
+use rocket::response::content::Json;
+use rocket::request::Form;
+use rocket_contrib::templates::Template;
+use serde::Serialize;
 
 
-#[get("/")]
-fn list_employees() -> Json<JsonValue> {
-    Json(json!([
-        {
-            "eid": 1000,
-            "name": "Julia",
-            "department": "CXO"
-        },
-        {
-            "eid": 1101,
-            "name": "Rinil",
-            "department": "HR"
-        }
-    ]))
+
+#[get("/hello")]
+fn hello() -> Json<&'static str> {
+  Json("{
+    'status': 'In',
+    'message': 'Hello World with RUST & Rocket!'
+  }")
+}
+
+#[catch(404)]
+fn not_found(req: &Request) -> String {
+    print!("{}", req);
+    format!("We lost with the path '{}'", req.uri())
 }
 
 
-
 fn main() {
-    rocket::ignite()
-        .mount("/employees", routes![list_employees])
-        .launch();
+  rocket::ignite()
+    .register(catchers![not_found])
+    .mount("/api", routes![hello])
+    .launch();
 }
