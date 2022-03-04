@@ -3,5 +3,5 @@ name = "helloworldapp"
 version = "0.0.0"
 authors = ["Rahul MR"]
 
-[dependencies.iron]
-version = "*"
+[dependencies]
+rocket = "0.5.0-rc.1"

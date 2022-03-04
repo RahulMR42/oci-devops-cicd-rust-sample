@@ -28,6 +28,7 @@ steps:
     timeoutInSeconds: 600
     name: "Build the app"
     command: |
+# Its an optional stage if you need the rust and cargo to be installed on build .In our case the whole action is managed by docker container.
       cd ${OCI_PRIMARY_SOURCE_DIR}
       curl https://sh.rustup.rs -sSf | sh -s -- -y
 

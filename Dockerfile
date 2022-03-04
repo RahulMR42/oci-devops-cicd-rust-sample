@@ -2,7 +2,5 @@ FROM rust
 
 COPY ./ ./
 
-RUN cargo build --release
+RUN cargo run
 
-# Run the binary
-CMD ["./target/release/helloworldapp"]

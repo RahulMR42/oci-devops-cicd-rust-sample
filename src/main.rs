@@ -1,6 +1,11 @@
-fn main() {
-    // Statements here are executed when the compiled binary is called
+[macro_use] extern crate rocket;
 
-    // Print text to the console
-    println!("Hello World!");
+#[get("/")]
+fn index() -> &'static str {
+    "Hello, world!"
+}
+
+#[launch]
+fn rocket() -> _ {
+    rocket::build().mount("/", routes![index])
 }
