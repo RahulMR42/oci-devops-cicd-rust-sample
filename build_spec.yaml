@@ -24,11 +24,11 @@ steps:
       export BUILDRUN_HASH=`echo ${OCI_BUILD_RUN_ID} | rev | cut -c 1-7`
       echo "BUILDRUN_HASH: " $BUILDRUN_HASH
 
+# Its an optional stage if you need the rust and cargo to be installed on build .In our case the whole action is managed by docker container.
   - type: Command
     timeoutInSeconds: 600
     name: "Build the app"
     command: |
-# Its an optional stage if you need the rust and cargo to be installed on build .In our case the whole action is managed by docker container.
       cd ${OCI_PRIMARY_SOURCE_DIR}
       curl https://sh.rustup.rs -sSf | sh -s -- -y
 
