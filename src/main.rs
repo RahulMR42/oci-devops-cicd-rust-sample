@@ -10,7 +10,7 @@ use rocket::response::content::Json;
 fn hello() -> Json<&'static str> {
   Json("{
     'status': 'In',
-    'message': 'Hello World with RUST & Rocket!'
+    'message': 'Hello World with RUST & Rocket Framework!'
   }")
 }
 
