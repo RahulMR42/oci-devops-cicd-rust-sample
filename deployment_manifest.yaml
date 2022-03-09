@@ -21,7 +21,7 @@ spec:
       containers:
         - name: sample-rust-app
           # enter the path to your image, be sure to include the correct region prefix
-          image: us-ashburn-1.ocir.io/fahdabidiroottenancy/rahul/mr-devops/mr-devops-rust-sample:aqfase3
+          image: us-ashburn-1.ocir.io/fahdabidiroottenancy/rahul/mr-devops/mr-devops-rust-sample:${BUILDRUN_HASH}
           #${BUILDRUN_HASH}
           imagePullPolicy: Always
           ports:
